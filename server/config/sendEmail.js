@@ -4,22 +4,13 @@ const transporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-        user: 'jeremy.dach17@ethereal.email',
-        pass: 'gChKhYYh2ft6uBcKyB'
+        user: process.env.NODEMAILER_USER,
+        pass: process.env.NODEMAILER_PASSWORD
     },
     tls: {
         rejectUnauthorized: false
     }
 });
-
-// const transporter = nodemailer.createTransport({
-//     host: 'smtp.gmail.com',
-//     port: 465,
-//     auth: {
-//         user: 'jeremy.dach17@ethereal.email',
-//         pass: 'gChKhYYh2ft6uBcKyB'
-//     }
-// });
 
 module.exports = {
     sendVerificationEmail: async(senderAddress, link) => {
@@ -29,7 +20,6 @@ module.exports = {
             from: '"Nalcapital test 👻" <siessna@yandex.ru>', // sender address
             to: senderAddress, // list of receivers
             subject: "Verify Email ✔", // Subject line
-            // text: "Hello world?", // plain text body
             html: `Please Verify Your Email by Clicking <a href="${link}">here</a> <br/>
         This link will be valid for only 7 days!`, // html body
         });

@@ -41,7 +41,6 @@ const App = () => {
                 setUser(decodedToken)
                 setIsLoggedIn(true)
             }
-            console.log(decodedToken)
         }
     }, [])
 
