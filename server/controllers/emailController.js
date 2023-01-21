@@ -12,7 +12,7 @@ const verifyEmailController = async (req, res) => {
     //  decode the token
     let decodedToken;
     try {
-        decodedToken = jwt.verify(token, '$jfdkslajfal/$fjkslajfklejf')
+        decodedToken = jwt.verify(token, process.env.TOKEN_KEY)
     } catch (err) {
         return res.status(400).json({success: false, msg: "Invalid Token!", error: err})
     }
